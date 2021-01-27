@@ -3,6 +3,7 @@ This project is used to find and check the match of the searched keyword in the 
 The project consists of two tests:
 
 1.Checks if the title of the first open page from the Google search results contains the keyword that we print in Google search form.
+
 2.Checks if there is a link to the page whose domain contains the keyword that we typed in google search.
 
 ### How to use
