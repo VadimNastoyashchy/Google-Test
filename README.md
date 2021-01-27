@@ -23,12 +23,14 @@ _goToFirstLink();_
 **4. To check tests, use the capabilities of the framework JUnit:**
 
 1. Test:
+
    _Assert.assertTrue(googleResultsPage.getPageTitle().contains("keyword"));_
    
    Will return true if the title of the first page contains a keyword.
 
 2. Test:
-   _googleResultsPage.searchContainsDomainInPages(number of pages checked, "keyword");
+
+   _googleResultsPage.searchContainsDomainInPages(number of pages checked, "keyword");_
    
    Will return true if the domain contains the keyword.
    
