@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import task.BaseClass;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,7 +27,7 @@ public class GoogleResultsPage {
     @FindBy(tagName = "a")
     private WebElement getLinks;
 
-    @FindBy(xpath = "//*[@id='xjs']/div/table/tbody/tr/td[12]")
+    @FindBy(xpath = "//*[@id='pnnext']")
     private WebElement getNextPage;
 
     @FindBy(tagName = "a")
@@ -33,19 +35,21 @@ public class GoogleResultsPage {
 
     private By findSearchElements = By.xpath("//*[@id='rso']/div/div");
     private By getLinksFromElements = By.tagName("a");
-    private By getNextPageElement = By.xpath("//*[@id='xjs']/div/table/tbody/tr/td[12]");
+    private By getNextPageElement = By.xpath("//*[@id='pnnext']");
 
 
-    public GoogleResultsPage(WebDriver driver) {
-        this.driver = driver;
+    public GoogleResultsPage(String browser) {
+        this.driver = BaseClass.getWebDriverInstance(browser);
+        PageFactory.initElements(driver, this);
         links = new LinkedList<>();
         formatLinks = new LinkedList<>();
     }
 
     public void goToFirstLink() {
         getResult();
-        driver.navigate().to(links.get(0));
+        driver.navigate().to(links.get(2));
     }
+
 
     public String getPageTitle() {
         String actualTitle = driver.getTitle();
@@ -67,19 +71,13 @@ public class GoogleResultsPage {
                     break endIteration;
                 }
                 if (linkCount == formatLinks.size()) {
-                    getNextPage = driver.findElement(getNextPageElement);
-                    getHref = getNextPage.findElement(getLinksFromElements);
-                    nextPage();
+                    driver.findElement(getNextPageElement).click();
                     linkCount = 1;
                 }
                 linkCount++;
             }
         }
         Assert.assertNotEquals(currentPage, numberOfPages);
-    }
-
-    private void nextPage() {
-        driver.navigate().to(getHref.getAttribute("href"));
     }
 
     private void getResult() {
