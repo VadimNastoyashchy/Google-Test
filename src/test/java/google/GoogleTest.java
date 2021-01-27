@@ -1,9 +1,9 @@
-package task;
+package google;
 
 import org.junit.Assert;
 import org.junit.Test;
-import task.pages.GoogleResultsPage;
-import task.pages.GoogleSearchPage;
+import google.pages.GoogleResultsPage;
+import google.pages.GoogleSearchPage;
 
 /**
  * @author Vadym Nastoiashchyi
