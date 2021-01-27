@@ -16,7 +16,7 @@ GoogleSearchPage googleSearchPage = new GoogleSearchPage("Your browser");
 _GoogleResultsPage googleResultsPage = googleSearchPage.
 search("url", "keyword");_
 
-**3. If the first test is used, you need to add a click on the link:**
+**3. If use first test, you need to add a click on the link:**
 
 _goToFirstLink();_
 
