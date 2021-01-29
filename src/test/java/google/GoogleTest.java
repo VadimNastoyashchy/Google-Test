@@ -1,9 +1,9 @@
 package google;
 
+import google.pages.GoogleMainPage;
 import org.junit.Assert;
 import org.junit.Test;
 import google.pages.GoogleResultsPage;
-import google.pages.GoogleSearchPage;
 
 /**
  * @author Vadym Nastoiashchyi
@@ -13,8 +13,8 @@ public class GoogleTest extends BaseTest {
 
     @Test
     public void verifyContainsWordFirstLinkTitleOnGoogleResultPages() {
-        GoogleSearchPage googleSearchPage = new GoogleSearchPage("Chrome");
-        GoogleResultsPage googleResultsPage = googleSearchPage.
+        GoogleMainPage googleMainPage = new GoogleMainPage("Chrome");
+        GoogleResultsPage googleResultsPage = googleMainPage.
                 search("https://www.google.com/", "automation");
         googleResultsPage.goToFirstLink();
         Assert.assertTrue(googleResultsPage.getPageTitle().contains("automation"));
@@ -22,8 +22,8 @@ public class GoogleTest extends BaseTest {
 
     @Test
     public void verifyWordIsExpectedDomainOnGoogleResultPages() {
-        GoogleSearchPage googleSearchPage = new GoogleSearchPage("Chrome");
-        GoogleResultsPage googleResultsPage = googleSearchPage.
+        GoogleMainPage googleMainPage = new GoogleMainPage("Chrome");
+        GoogleResultsPage googleResultsPage = googleMainPage.
                 search("https://www.google.com/", "automation");
         googleResultsPage.searchContainsDomainInPages(5, "automation");
     }

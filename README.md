@@ -9,11 +9,11 @@ The project consists of two tests:
 ### How to use
 **1. You must create Google search page, and pass in the preferred browser parameter:**
    
-_GoogleSearchPage googleSearchPage = new GoogleSearchPage("Your browser");_
+_GoogleMainPage googleMainPage = new GoogleMainPage("Your browser");_
 
 **2. Create a google result by calling the method chain, and passing the parameter url address and keyword:**
 
-_GoogleResultsPage googleResultsPage = googleSearchPage.
+_GoogleResultsPage googleResultsPage = googleMainPage.
 search("url", "keyword");_
 
 **3. If use first test, then need to add a click on the link:**

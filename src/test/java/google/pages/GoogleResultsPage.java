@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import google.BaseClass;
+import google.Browser;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class GoogleResultsPage {
 
 
     public GoogleResultsPage(String browser) {
-        this.driver = BaseClass.getWebDriverInstance(browser);
+        this.driver = Browser.getWebDriverInstance(browser);
         PageFactory.initElements(driver, this);
         links = new LinkedList<>();
         formatLinks = new LinkedList<>();

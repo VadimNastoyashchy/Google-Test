@@ -4,13 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import google.BaseClass;
+import google.Browser;
 
 /**
  * @author Vadym Nastoiashchyi
  */
 
-public class GoogleSearchPage {
+public class GoogleMainPage {
 
     private WebDriver driver;
     private String browser;
@@ -19,9 +19,9 @@ public class GoogleSearchPage {
     private WebElement googleSearchForm;
 
 
-    public GoogleSearchPage(String browser) {
+    public GoogleMainPage(String browser) {
         this.browser = browser;
-        this.driver = BaseClass.getWebDriverInstance(browser);
+        this.driver = Browser.getWebDriverInstance(browser);
         PageFactory.initElements(driver, this);
     }
 

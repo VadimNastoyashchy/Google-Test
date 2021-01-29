@@ -12,10 +12,10 @@ import org.openqa.selenium.opera.OperaDriver;
  * @author Vadym Nastoiashchyi
  */
 
-public class BaseClass {
+public class Browser {
     private static WebDriver driver = null;
 
-    private BaseClass() {
+    private Browser() {
     }
 
     public static WebDriver getWebDriverInstance(String browser) {
@@ -35,6 +35,9 @@ public class BaseClass {
             } else if ("IEXPLORER".contains(browser.toUpperCase())) {
                 WebDriverManager.iedriver().setup();
                 driver = new InternetExplorerDriver();
+            } else {
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
             }
         }
         return driver;

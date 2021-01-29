@@ -10,7 +10,7 @@ public class BaseTest {
 
     @After
     public void tearDown() {
-        BaseClass.quit();
+        Browser.quit();
     }
 
 }
