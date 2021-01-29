@@ -17,6 +17,9 @@ import java.util.List;
 
 public class GoogleResultsPage {
 
+    @FindBy(name = "q")
+    private WebElement googleSearchForm;
+
     private List<String> links;
     private List<String> formatLinks;
 
@@ -36,6 +39,12 @@ public class GoogleResultsPage {
         PageFactory.initElements(DriverFactory.driver, this);
         links = new LinkedList<>();
         formatLinks = new LinkedList<>();
+    }
+
+    public GoogleResultsPage search(String searchWord) {
+        googleSearchForm.sendKeys(searchWord);
+        googleSearchForm.submit();
+        return new GoogleResultsPage();
     }
 
     public void goToFirstLink() {

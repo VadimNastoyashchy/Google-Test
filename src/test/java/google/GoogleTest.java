@@ -13,18 +13,16 @@ public class GoogleTest extends BaseTest {
 
     @Test
     public void verifyContainsWordFirstLinkTitleOnGoogleResultPages() {
-        GoogleMainPage googleMainPage = new GoogleMainPage();
-        GoogleResultsPage googleResultsPage = googleMainPage.
-                search("https://www.google.com/", "automation");
+        GoogleResultsPage googleResultsPage = new GoogleMainPage().openGooglePage().
+                search("automation");
         googleResultsPage.goToFirstLink();
         Assert.assertTrue(googleResultsPage.getPageTitle().contains("automation"));
     }
 
     @Test
     public void verifyWordIsExpectedDomainOnGoogleResultPages() {
-        GoogleMainPage googleMainPage = new GoogleMainPage();
-        GoogleResultsPage googleResultsPage = googleMainPage.
-                search("https://www.google.com/", "automation");
+        GoogleResultsPage googleResultsPage = new GoogleMainPage().openGooglePage().
+                search("automation");
         googleResultsPage.searchContainsDomainInPages(5, "automation");
     }
 
