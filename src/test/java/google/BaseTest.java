@@ -1,5 +1,6 @@
 package google;
 
+import google.driverutil.DriverFactory;
 import org.junit.After;
 
 /**
@@ -10,7 +11,7 @@ public class BaseTest {
 
     @After
     public void tearDown() {
-        Browser.quit();
+        DriverFactory.quit();
     }
 
 }

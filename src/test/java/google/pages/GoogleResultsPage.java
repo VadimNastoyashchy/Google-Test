@@ -1,12 +1,12 @@
 package google.pages;
 
+import google.driverutil.DriverFactory;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import google.Browser;
+
 
 import java.util.LinkedList;
 import java.util.List;
@@ -26,32 +26,26 @@ public class GoogleResultsPage {
     @FindBy(tagName = "a")
     private WebElement getLinks;
 
-    @FindBy(xpath = "//*[@id='pnnext']")
-    private WebElement getNextPage;
-
-    @FindBy(tagName = "a")
-    private WebElement getHref;
-
     private By findSearchElements = By.xpath("//*[@id='rso']/div/div");
     private By getLinksFromElements = By.tagName("a");
     private By getNextPageElement = By.xpath("//*[@id='pnnext']");
 
 
-    public GoogleResultsPage(String browser) {
-        Browser.getWebDriverInstance(browser);
-        PageFactory.initElements(Browser.driver, this);
+    public GoogleResultsPage() {
+        DriverFactory.getWebDriverInstance();
+        PageFactory.initElements(DriverFactory.driver, this);
         links = new LinkedList<>();
         formatLinks = new LinkedList<>();
     }
 
     public void goToFirstLink() {
         getResult();
-        Browser.driver.navigate().to(links.get(2));
+        DriverFactory.driver.navigate().to(links.get(2));
     }
 
 
     public String getPageTitle() {
-        String actualTitle = Browser.driver.getTitle();
+        String actualTitle = DriverFactory.driver.getTitle();
         return actualTitle.toLowerCase();
     }
 
@@ -70,7 +64,7 @@ public class GoogleResultsPage {
                     break endIteration;
                 }
                 if (linkCount == formatLinks.size()) {
-                    Browser.driver.findElement(getNextPageElement).click();
+                    DriverFactory.driver.findElement(getNextPageElement).click();
                     linkCount = 1;
                 }
                 linkCount++;
@@ -80,7 +74,7 @@ public class GoogleResultsPage {
     }
 
     private void getResult() {
-        findElements = Browser.driver.findElements(findSearchElements);
+        findElements = DriverFactory.driver.findElements(findSearchElements);
         getLinks(findElements, links);
     }
 

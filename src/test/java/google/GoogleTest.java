@@ -13,7 +13,7 @@ public class GoogleTest extends BaseTest {
 
     @Test
     public void verifyContainsWordFirstLinkTitleOnGoogleResultPages() {
-        GoogleMainPage googleMainPage = new GoogleMainPage("Chrome");
+        GoogleMainPage googleMainPage = new GoogleMainPage();
         GoogleResultsPage googleResultsPage = googleMainPage.
                 search("https://www.google.com/", "automation");
         googleResultsPage.goToFirstLink();
@@ -22,7 +22,7 @@ public class GoogleTest extends BaseTest {
 
     @Test
     public void verifyWordIsExpectedDomainOnGoogleResultPages() {
-        GoogleMainPage googleMainPage = new GoogleMainPage("Chrome");
+        GoogleMainPage googleMainPage = new GoogleMainPage();
         GoogleResultsPage googleResultsPage = googleMainPage.
                 search("https://www.google.com/", "automation");
         googleResultsPage.searchContainsDomainInPages(5, "automation");
