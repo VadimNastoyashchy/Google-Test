@@ -17,7 +17,6 @@ import java.util.List;
 
 public class GoogleResultsPage {
 
-    private WebDriver driver;
     private List<String> links;
     private List<String> formatLinks;
 
@@ -39,20 +38,20 @@ public class GoogleResultsPage {
 
 
     public GoogleResultsPage(String browser) {
-        this.driver = Browser.getWebDriverInstance(browser);
-        PageFactory.initElements(driver, this);
+        Browser.getWebDriverInstance(browser);
+        PageFactory.initElements(Browser.driver, this);
         links = new LinkedList<>();
         formatLinks = new LinkedList<>();
     }
 
     public void goToFirstLink() {
         getResult();
-        driver.navigate().to(links.get(2));
+        Browser.driver.navigate().to(links.get(2));
     }
 
 
     public String getPageTitle() {
-        String actualTitle = driver.getTitle();
+        String actualTitle = Browser.driver.getTitle();
         return actualTitle.toLowerCase();
     }
 
@@ -71,7 +70,7 @@ public class GoogleResultsPage {
                     break endIteration;
                 }
                 if (linkCount == formatLinks.size()) {
-                    driver.findElement(getNextPageElement).click();
+                    Browser.driver.findElement(getNextPageElement).click();
                     linkCount = 1;
                 }
                 linkCount++;
@@ -81,7 +80,7 @@ public class GoogleResultsPage {
     }
 
     private void getResult() {
-        findElements = driver.findElements(findSearchElements);
+        findElements = Browser.driver.findElements(findSearchElements);
         getLinks(findElements, links);
     }
 

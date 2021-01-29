@@ -13,12 +13,12 @@ import org.openqa.selenium.opera.OperaDriver;
  */
 
 public class Browser {
-    private static WebDriver driver = null;
+    public static WebDriver driver = null;
 
     private Browser() {
     }
 
-    public static WebDriver getWebDriverInstance(String browser) {
+    public static void getWebDriverInstance(String browser) {
         if (driver == null) {
             if ("CHROME".contains(browser.toUpperCase())) {
                 WebDriverManager.chromedriver().setup();
@@ -40,7 +40,6 @@ public class Browser {
                 driver = new ChromeDriver();
             }
         }
-        return driver;
     }
 
     public static void quit() {

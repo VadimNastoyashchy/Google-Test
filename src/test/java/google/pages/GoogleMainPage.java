@@ -12,7 +12,6 @@ import google.Browser;
 
 public class GoogleMainPage {
 
-    private WebDriver driver;
     private String browser;
 
     @FindBy(name = "q")
@@ -21,12 +20,12 @@ public class GoogleMainPage {
 
     public GoogleMainPage(String browser) {
         this.browser = browser;
-        this.driver = Browser.getWebDriverInstance(browser);
-        PageFactory.initElements(driver, this);
+        Browser.getWebDriverInstance(browser);
+        PageFactory.initElements(Browser.driver, this);
     }
 
     public void openGooglePage(String url) {
-        driver.get(url);
+        Browser.driver.get(url);
     }
 
     public GoogleResultsPage search(String url, String searchWord) {
