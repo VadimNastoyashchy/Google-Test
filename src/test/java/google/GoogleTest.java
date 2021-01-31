@@ -1,35 +1,17 @@
 package google;
 
-import google.pages.GoogleMainPage;
-import org.junit.Assert;
-import org.junit.Test;
-import google.pages.GoogleResultsPage;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
 
 /**
  * @author Vadym Nastoiashchyi
  */
 
-public class GoogleTest extends BaseTest {
-
-    @Test
-    public void verifyContainsWordFirstLinkTitleOnGoogleResultPages() {
-        GoogleResultsPage googleResultsPage = new GoogleMainPage().openGooglePage().
-                search("automation");
-        googleResultsPage.goToFirstLink();
-        Assert.assertTrue(googleResultsPage.getPageTitle().contains("automation"));
-    }
-
-    @Test
-    public void verifyWordIsExpectedDomainOnGoogleResultPages() {
-        GoogleResultsPage googleResultsPage = new GoogleMainPage().openGooglePage().
-                search("automation");
-        googleResultsPage.searchContainsDomainInPages(5, "automation");
-    }
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        plugin = "pretty",
+        features = "src/test/resources")
+public class GoogleTest {
 
 }
-
-
-
-
-
-

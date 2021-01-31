@@ -1,6 +1,7 @@
 package google.driverutil;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -19,7 +20,6 @@ public class DriverFactory {
 
     private DriverFactory() {
     }
-
 
     public static void getWebDriverInstance() {
         String browserName = System.getProperty("browser", DriverType.CHROME.toString()).toUpperCase();
@@ -55,6 +55,7 @@ public class DriverFactory {
         }
     }
 
+//    @After
     public static void quit() {
         if (driver != null) {
             driver.quit();
