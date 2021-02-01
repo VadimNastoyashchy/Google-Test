@@ -23,12 +23,12 @@ public class GoogleTestSteps {
 
     @Given("user is on Google Home Page")
     public void userIsOnGoogleHomePage() {
+        googleResultsPage = new GoogleMainPage().openGooglePage();
     }
 
     @When("user search for {string}")
     public void userSearchFor(String keyWord) {
-        googleResultsPage = new GoogleMainPage().openGooglePage().
-                search(keyWord);
+        googleResultsPage.search(keyWord);
     }
 
     @Then("first search results link contains title {string}")

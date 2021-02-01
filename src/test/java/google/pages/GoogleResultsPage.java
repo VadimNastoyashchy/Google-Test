@@ -35,10 +35,9 @@ public class GoogleResultsPage {
         PageFactory.initElements(DriverFactory.driver, this);
     }
 
-    public GoogleResultsPage search(String searchWord) {
+    public void search(String searchWord) {
         googleSearchForm.sendKeys(searchWord);
         googleSearchForm.submit();
-        return new GoogleResultsPage();
     }
 
     public void goToFirstLink() {
