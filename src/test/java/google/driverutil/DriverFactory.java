@@ -55,7 +55,6 @@ public class DriverFactory {
         }
     }
 
-//    @After
     public static void quit() {
         if (driver != null) {
             driver.quit();

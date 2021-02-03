@@ -10,9 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class GoogleMainPage {
 
-    private String browser;
-
-
     public GoogleMainPage() {
         DriverFactory.getWebDriverInstance();
         PageFactory.initElements(DriverFactory.driver, this);
