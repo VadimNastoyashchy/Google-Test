@@ -16,15 +16,11 @@ import java.util.List;
 
 public class GoogleResultsPage {
 
-    @FindBy(name = "q")
-    private WebElement googleSearchForm;
-
     @FindBy(xpath = "//div[@class='g']")
     private List<WebElement> findElements;
 
     @FindBy(tagName = "a")
     private WebElement getLinks;
-
 
     private By findSearchElements = By.xpath("//div[@class='g']");
     private By getLinksFromElements = By.tagName("a");
@@ -34,11 +30,6 @@ public class GoogleResultsPage {
     public GoogleResultsPage() {
         DriverFactory.getWebDriverInstance();
         PageFactory.initElements(DriverFactory.driver, this);
-    }
-
-    public void search(String searchWord) {
-        googleSearchForm.sendKeys(searchWord);
-        googleSearchForm.submit();
     }
 
     public void goToFirstLink() {

@@ -14,7 +14,6 @@ import org.junit.Assert;
  */
 
 public class GoogleTestSteps {
-    GoogleResultsPage googleResultsPage;
 
     @After
     public void tearDown() {
@@ -23,22 +22,24 @@ public class GoogleTestSteps {
 
     @Given("user is on Google Home Page")
     public void userIsOnGoogleHomePage() {
-        googleResultsPage = new GoogleMainPage().openGooglePage();
+        GoogleResultsPage googleResultsPage = new GoogleMainPage().openGooglePage();
     }
 
     @When("user search for {string}")
     public void userSearchFor(String keyWord) {
-        googleResultsPage.search(keyWord);
+        GoogleResultsPage googleResultsPage = new GoogleMainPage().search(keyWord);
     }
 
     @Then("first search results link contains title {string}")
     public void firstSearchResultsLinkContainsTitle(String keyWord) {
+        GoogleResultsPage googleResultsPage = new GoogleResultsPage();
         googleResultsPage.goToFirstLink();
         Assert.assertTrue(googleResultsPage.getPageTitle().contains(keyWord));
     }
 
     @Then("Check if there is a link to the page whose domain contains the keyword {string}")
     public void checkIfThereIsALinkToThePageWhoseDomainContainsTheKeyword(String keyWord) {
+        GoogleResultsPage googleResultsPage = new GoogleResultsPage();
         googleResultsPage.searchContainsDomainInPages(5, keyWord);
     }
 }
