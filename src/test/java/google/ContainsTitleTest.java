@@ -9,9 +9,8 @@ import org.junit.runner.RunWith;
  */
 
 @RunWith(Cucumber.class)
-@CucumberOptions(
-        plugin = "pretty",
-        features = "src/test/resources")
-public class GoogleTest {
-
+@CucumberOptions(features = "src/test/resources/",
+        tags = "@containsTitle",
+        plugin = "pretty")
+public class ContainsTitleTest {
 }
